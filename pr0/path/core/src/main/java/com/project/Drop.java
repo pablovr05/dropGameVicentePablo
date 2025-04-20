@@ -16,11 +16,11 @@ public class Drop {
     }
 
     public boolean collidesWith(Collector collector) {
-        return x < collector.getX() + collector.getWidth() &&
-               x + width > collector.getX() &&
-               y < collector.getY() + collector.getHeight() &&
-               y + height > collector.getY();
+        boolean isInsideX = x + width / 2 > collector.getX() && x + width / 2 < collector.getX() + collector.getWidth();
+        boolean isTouchingTop = y <= collector.getY() + collector.getHeight() && y + height >= collector.getY() + collector.getHeight();
+        return isInsideX && isTouchingTop;
     }
+    
 
     public float getX() { return x; }
     public float getY() { return y; }
